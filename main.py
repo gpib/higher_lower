@@ -1,10 +1,18 @@
 import art
 import data_bank
 import random
+from os import system, name
 
 print(len(data_bank.data))
 print(random.randint(0,len(data_bank.data)))
+def clear():
+    # for windows the name is 'nt'
+    if name == 'nt':
+        _ = system('cls')
 
+    # and for mac and linux, the os.name is 'posix'
+    else:
+        _ = system('clear')
 def draw_person():
     person_dict = {}
     person_dict = data_bank.data[random.randint(0,len(data_bank.data))]
@@ -53,9 +61,11 @@ while not end_game:
         print(f"You are right! Your current score is {score}")
         person_A = person_B
         person_B = draw_person()
+        clear()
     else:
         print("Sorry, you are wrong")
         end_game = 1
+        print(f"Your score is {score}")
 
 #TODO 1 set score
 #TODO 2 draw first person
